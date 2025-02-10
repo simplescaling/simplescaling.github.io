@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="One embedder for all tasks">
+  <meta name="keywords" content="Embedder, encoder">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/lib/codemirror.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/addon/runmode/runmode-standalone.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/mode/python/python.min.js"></script>
+
+  <title>s1: Simple test-time scaling</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">s1: Simple test-time scaling</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://muennighoff.github.io/">Niklas Muennighoff*</a><sup>1,</sup><sup>3,</sup><sup>4</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://zitongyang.github.io/">Zitong Yang*</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://weijia-shi.netlify.app/">Weijia Shi*</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://xiangli1999.github.io/">Xiang Lisa Li*</a><sup>1</sup>,
+            </span><br>
+            <span class="author-block">
+              <a href="https://profiles.stanford.edu/fei-fei-li">Li Fei-Fei</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://homes.cs.washington.edu/~hannaneh//">Hannaneh Hajishirzi</a><sup>2,</sup><sup>3</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://cs.stanford.edu/~pliang/">Percy Liang</a>,<sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://candes.su.domains/">Emmanuel Candès</a>,<sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://thashim.github.io/">Tatsunori Hashimoto</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Stanford University,</span>
+            <span class="author-block"><sup>2</sup>University of Washington,</span>
+            <span class="author-block"><sup>3</sup>Allen Institute for AI,</span>
+            <span class="author-block"><sup>4</sup>Contextual AI</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2501.19393"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/simplescaling/s1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Twitter Link. -->
+              <span class="link-block">
+                <a href="https://hf.co/datasets/simplescaling/s1K"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa fa-book"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://hf.co/simplescaling/s1-32B"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Model</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://x.com/Muennighoff/status/1886405528777073134"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-twitter"></i>
+                  </span>
+                  <span>Twitter</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.linkedin.com/posts/muennighoff_the-recent-deepseek-r1-model-is-exciting-activity-7292213696733339650-_woF"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-linkedin"></i>
+                  </span>
+                  <span>Linkedin</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="subtitle has-text-centered">
+        We introduce s1: a minimal recipe for test-time scaling and strong reasoning performance matching o1-preview with just 1,000 examples & budget forcing
+      </h2>
+      <p align="center">
+        <img src="static/images/scaling.png" width="100%" align="middle" class="center"/> <!-- To .gif format-->
+      </p>
+
+    </div>
+  </div>
+</section>
+  
+ <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Test-time scaling is a promising new approach to language modeling that uses extra test-time compute to improve performance. Recently, OpenAI's o1 model showed this capability but did not publicly share its methodology, leading to many replication efforts. We seek the simplest approach to achieve test-time scaling and strong reasoning performance. First, we curate a small dataset s1K of 1,000 questions paired with reasoning traces relying on three criteria we validate through ablations: difficulty, diversity, and quality. Second, we develop budget forcing to control test-time compute by forcefully terminating the model's thinking process or lengthening it by appending "Wait" multiple times to the model's generation when it tries to end. This can lead the model to double-check its answer, often fixing incorrect reasoning steps. After supervised finetuning the Qwen2.5-32B-Instruct language model on s1K and equipping it with budget forcing, our model s1-32B exceeds o1-preview on competition math questions by up to 27% (MATH and AIME24). Further, scaling s1-32B with budget forcing allows extrapolating beyond its performance without test-time intervention: from 50% to 57% on AIME24. Our model, data, and code are open-source.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+  
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Reasoning</h2>
+        <div class="content has-text-justified">
+          <p>
+            We build a diverse, difficult & high-quality dataset of 1000 questions - "s1K" (left). Traing on s1K yields s1 (right) - the most sample-efficient reasoning model on three commonly used tasks:
+          </p>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2103.03874">MATH500</a> (Mathematical Problem Solving)</li>
+          <li><a href="https://artofproblemsolving.com/wiki/index.php/2024_AIME_I">AIME24</a> (Competition Math)</li>
+          <li><a href="https://arxiv.org/abs/2311.12022">GPQA Diamond</a> (PhD-Level Science Questions) </li>
+        </ul>
+          <img src="static/images/diverse.png" class="left" width="42%">
+          <img src="static/images/sample_efficient.png" class="right" width="55%">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Test-time scaling</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce "Budget Forcing" - a simple technique to forcefully control the model's thinking time.
+          </p>
+          <img src="static/images/raspberry_caption.png" class="center">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            Budget forcing allows controlling test-time compute (left) and scales better than majority voting (right).
+          </p>
+          <img src="static/images/parallelscaling.png" class="center">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Scaling further</h2>
+        <div class="content has-text-justified">
+          <p>
+            Letting the model think for longer sequentially eventually becomes too long and the model runs out of context. To circumvent this, we can combine Budget Forcing with parallel scaling techniques to scale further.
+          </p>
+          <img src="static/images/beyond.png" class="center">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Learn more</h2>
+    See our paper for more details: <a href="https://arxiv.org/abs/2501.19393">s1: Simple test-time scaling</a>.
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgement</h2>
+    We thank Ryan Marten for help with generating traces from DeepSeek r1. This work was partly conducted using the Stanford Marlowe GPU cluster made possible by financial support from Stanford University. We thank Alexander M. Rush, Andrew Ilyas, Banghua Zhu, Chenglei Si, Chunting Zhou, John Yang, Ludwig Schmidt, Samy Jelassi, Tengyu Ma, Xuechen Li, Yu Sun and Yue Zhang for very constructive discussions.
+  </div>
+</section>
+ 
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{muennighoff2025s1simpletesttimescaling,
+      title={s1: Simple test-time scaling}, 
+      author={Niklas Muennighoff and Zitong Yang and Weijia Shi and Xiang Lisa Li and Li Fei-Fei and Hannaneh Hajishirzi and Luke Zettlemoyer and Percy Liang and Emmanuel Candès and Tatsunori Hashimoto},
+      year={2025},
+      eprint={2501.19393},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2501.19393}, 
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website <a
+              href="https://github.com/nerfies/nerfies.github.io">adapted from</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
